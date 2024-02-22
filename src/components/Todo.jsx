@@ -1,36 +1,44 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-
-
+import React, { useState } from "react";
 
 function Todo() {
-  return ( <div className=' md:container md:mx-auto min-h-[80vh] w-full bg-slate-500 '>
-      <div className=''>    
-      <h1 className=' text-center text-3xl p-2'>iTask - Manage your todos at one place</h1>
-      <div className=' flex flex-col items-center gap-2'>
-        <h2>Add a Todo</h2>
+
+  const [todo, setTodo] = useState("")
+  const [todos, setTodos] = useState([])
+  const handleChange = (e) => {
+  setTodo(e.target.value)
+  }
+  const handleAdd = () => {
+setTodos([...todos])
+setTodo("")
+console.log(todo)
+  }
+  return (
+    <>
+      <div className=" container bg-violet-200 mx-auto rounded-md my-5 p-5 min-h-[80vh] w-full ">
         <div>
-          <input type="text" placeholder='write something here' />
-          <button>save</button>
+          <h2 className="  font-bold text-xl">Add a Todo</h2>
+          <input type="text" onChange={handleChange} value={todo} className=" w-1/2" />
+          <button onClick={handleAdd} className=" bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-7 text-sm text-white font-semibold py-1">Add</button>
         </div>
-        <div> 
-          <input type="checkbox" />
-          <label >Show Finished</label>
+        <h2 className="  font-bold text-xl">your todos</h2>
+        <div>
+          <div className="todos">
+            <div className="flex">
+              <div className="">
+                {todo}
+               
+              </div>
+              <div className="button">
+                <button className=" bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-4 text-sm text-white font-semibold py-1">Edit</button>
+                <button className=" bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-3 text-sm text-white font-semibold py-1">Delete</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <h2>your Todos</h2>
-      <div className=' flex gap-2'>
-<div>
-  Lorem ipsum dolor sit amet.
-</div>
-<div className=' flex gap-2'>
-  <button>edit</button>
-  <button>delete</button>
-</div>
-      </div>
-      </div>
-    </div>
-  )
+    </>
+  );
 }
 
-export default Todo
+export default Todo;
