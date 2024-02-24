@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { MdEdit,MdDeleteForever  } from "react-icons/md";
 
 function Todo() {
   const [todo, setTodo] = useState("");
@@ -8,9 +9,9 @@ function Todo() {
   const [showFinished, setShowFinished] = useState(true);
 
 useEffect(() => {
-  let todoString = localStorage.getItem('todos')
+  let todoString = localStorage.getItem("todos")
 if(todoString){
-  let todos = JSON.parse(localStorage.getItem('todos'))
+  let todos = JSON.parse(localStorage.getItem("todos"))
   setTodos(todos)
 }
   
@@ -18,7 +19,7 @@ if(todoString){
 
 
 const saveTodo = (params) => {
- localStorage.setItem('todos', JSON.stringify(todos))
+ localStorage.setItem("todos", JSON.stringify(todos))
 }
 
   const handleChange = (e) => {
@@ -76,7 +77,8 @@ const saveTodo = (params) => {
           />
           <button
             onClick={handleAdd}
-            className=" bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-7 text-sm text-white font-semibold py-1"
+            disabled={todo.length<=3}
+            className=" disabled:bg-500 bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-7 text-sm text-white font-semibold py-1"
           >
             Add
           </button>
@@ -108,13 +110,13 @@ const saveTodo = (params) => {
                           onClick={(e) => handleEdit(e, item.id)}
                           className=" bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-4 text-sm text-white font-semibold py-1"
                         >
-                          Edit
+                          <MdEdit />
                         </button>
                         <button
                           onClick={(e) => handleDelete(e, item.id)}
                           className=" bg-blue-600 hover:bg-blue-700 p-2 rounded-md mx-3 text-sm text-white font-semibold py-1"
                         >
-                          Delete
+                         <MdDeleteForever />
                         </button>
                       </div>
                     </div>
