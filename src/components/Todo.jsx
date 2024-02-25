@@ -66,14 +66,14 @@ const saveTodo = (params) => {
   };
   return (
     <>
-      <div className=" container bg-violet-200 mx-auto rounded-md my-5 p-5 min-h-[80vh] w-full ">
-        <div>
-          <h2 className="  font-bold text-xl">Add a Todo</h2>
+      <div className=" md:container md:mx-auto md:w-[40%] mx-3 my-5 rounded-lg p-5 bg-violet-200 min-h-[80vh] ">
+       <div className=" flex flex-col gap-4 my-5">
+          <h2 className="  font-bold text-xl text-center ">Add a Todo</h2>
           <input
             type="text"
             onChange={handleChange}
             value={todo}
-            className=" w-1/2"
+            className=" rounded-md p-2 w-[75vh] items-center"
           />
           <button
             onClick={handleAdd}
@@ -125,7 +125,7 @@ const saveTodo = (params) => {
               );
             })}
           </div>
-        </div>
+       </div>
       </div>
     </>
   );
